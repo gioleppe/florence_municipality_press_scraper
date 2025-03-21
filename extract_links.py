@@ -146,7 +146,7 @@ def save_page_to_sqlite(data, conn=None, db_file='press_releases.db'):
             comunicato_id = extract_comunicato_id(item['url'])
             if comunicato_id:
                 cursor.execute(
-                    "INSERT OR REPLACE INTO press_releases (id, url, title, date, content) VALUES (?, ?, ?, ?, ?)",
+                    "INSERT OR IGNORE INTO press_releases (id, url, title, date, content) VALUES (?, ?, ?, ?, ?)",
                     (comunicato_id, item['url'], item['title'], item['date'], None)
                 )
                 saved_count += 1
@@ -209,7 +209,7 @@ def scrape_and_save_pages(start_page=0, end_page=7226, base_url='https://press.c
                     print(f"Saved {saved_count} press releases from page {page_num} to database")
                     
                     # Add a small delay to avoid overwhelming the server
-                    time.sleep(1)
+                    time.sleep(2)
                 else:
                     print(f"Failed to retrieve page {page_num}. Status code: {response.status_code}")
                     
@@ -266,7 +266,7 @@ def main():
     
     # For the full dataset:
     start_page = 0
-    end_page = 5
+    end_page = 7226
     
     # Initialize the database first
     if initialize_database(db_file):
