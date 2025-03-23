@@ -11,8 +11,8 @@ A tool for scraping, extracting, and storing press releases from the Florence Mu
 
 ## Project Structure
 
-- `extract_links.py`: Scrapes press release metadata (URLs, titles, dates)
-- `extract_content.py`: Downloads and extracts the content of press releases
+- `00_extract_links.py`: Scrapes press release metadata (URLs, titles, dates)
+- `01_extract_content.py`: Downloads and extracts the content of press releases
 
 ## How to Run
 
@@ -37,10 +37,10 @@ A tool for scraping, extracting, and storing press releases from the Florence Mu
 2. **Run the scripts in sequence**:
    ```bash
    # First, extract all links (creates the database and populates metadata)
-   python extract_links.py
+   python 00_extract_links.py
    
    # Then, extract content for all press releases
-   python extract_content.py
+   python 01_extract_content.py
    ```
 
 ## Database
