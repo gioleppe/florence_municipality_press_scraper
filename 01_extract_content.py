@@ -42,7 +42,7 @@ def extract_page_content(url, max_retries=3, timeout=10):
             else:
                 print(f"Failed to retrieve content from {url}. Status code: {response.status_code}")
                 retries += 1
-                time.sleep(2)  # Wait before retrying
+                time.sleep(0.1)  # Wait before retrying
                 
         except Exception as e:
             print(f"Error fetching content from {url}: {str(e)}")
@@ -108,7 +108,7 @@ def update_press_release_content(db_file='press_releases.db', limit=None):
                     print(f"Could not extract content for ID {release_id}")
                 
                 # Small delay to avoid hammering the server
-                time.sleep(1)
+                time.sleep(.1)
                 
                 total_processed += 1
                 
@@ -146,3 +146,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
